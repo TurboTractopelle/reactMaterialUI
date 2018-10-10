@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
-import { Header, Footer } from "./Components/Layout/index";
+import { Header, Footer } from "./Components/Layout";
+import Exercices from "./Components/Exercices/";
 import "./styles.css";
 
 class App extends Component {
@@ -8,6 +9,7 @@ class App extends Component {
     return (
       <fragment>
         <Header />
+        <Exercices />
         <Footer />
       </fragment>
     );
