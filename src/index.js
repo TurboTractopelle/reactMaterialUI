@@ -1,15 +1,17 @@
-import React from "react";
+import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
-
+import { Header, Footer } from "./Components/Layout/index";
 import "./styles.css";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Test Material UI</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <fragment>
+        <Header />
+        <Footer />
+      </fragment>
+    );
+  }
 }
 
 const rootElement = document.getElementById("root");
