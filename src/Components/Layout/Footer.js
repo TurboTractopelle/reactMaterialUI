@@ -10,12 +10,11 @@ value={this.state.value}
 onChange={this.handleChange}
 */
 
-const Footer = () => (
+const Footer = ({ muscles }) => (
   <Paper>
     <Tabs indicatorColor="primary" textColor="primary" centered value={0}>
-      <Tab label="Item One" />
-      <Tab label="Item Two" />
-      <Tab label="Item Three" />
+      <Tab label="All" />
+      {muscles.map((muscle, i) => <Tab label={muscle} key={i} />)}
     </Tabs>
   </Paper>
 );

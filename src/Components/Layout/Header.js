@@ -8,10 +8,9 @@ import IconButton from "@material-ui/core/IconButton";
 const Header = () => (
   <AppBar position="static">
     <Toolbar>
-      <Typography variant="headline" color="inherit">
-        News
+      <Typography variant="h5" color="inherit">
+        Exercices database
       </Typography>
-      <Button color="inherit">Login</Button>
     </Toolbar>
   </AppBar>
 );
