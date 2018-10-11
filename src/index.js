@@ -8,24 +8,22 @@ import "./styles.css";
 class App extends Component {
   state = { exercises };
 
-  getExercicesByMuscles = () => {
-    return this.state.exercises.reduce((exercices, exercice) => {
-      const { muscles } = exercice;
-
-      exercices[muscles] = exercices[muscles]
-        ? [...exercices[muscles], exercice]
-        : [exercice];
-
-      return exercices;
-    }, {});
-  };
+  getExercicesByMuscles = () =>
+    Object.entries(
+      this.state.exercises.reduce((acc, item) => {
+        const cle = item.muscles;
+        acc[cle] = acc[cle] ? [...acc[cle], item] : [item];
+        return acc;
+      }, {})
+    );
 
   render() {
-    console.log(this.getExercicesByMuscles());
+    const exos = this.getExercicesByMuscles();
+    console.log(exos);
     return (
       <fragment>
         <Header />
-        <Exercices exercises={this.getExercicesByMuscles} />
+        <Exercices exos={exos} />
         <Footer muscles={muscles} />
       </fragment>
     );
