@@ -6,7 +6,10 @@ import { muscles, exercises } from "./store";
 import "./styles.css";
 
 class App extends Component {
-  state = { exercises };
+  state = {
+    exercises,
+    category: ""
+  };
 
   getExercicesByMuscles = () =>
     Object.entries(
@@ -17,14 +20,25 @@ class App extends Component {
       }, {})
     );
 
+  handleSelectCategory = category => {
+    this.setState({
+      category
+    });
+  };
+
   render() {
     const exos = this.getExercicesByMuscles();
-    console.log(exos);
+    const { category } = this.state;
+
     return (
       <fragment>
         <Header />
         <Exercices exos={exos} />
-        <Footer muscles={muscles} />
+        <Footer
+          muscles={muscles}
+          category={category}
+          onSelect={this.handleSelectCategory}
+        />
       </fragment>
     );
   }

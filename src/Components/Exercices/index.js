@@ -4,7 +4,6 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 
 const styles = {
@@ -21,7 +20,6 @@ const Exercices = ({ exos, test }) => (
   <Grid container>
     <Grid item xs>
       <Paper style={styles.paper}>
-        {console.log(exos)}
         {exos.map(([group, exosGroup]) => (
           <fragment>
             <Typography variant="h5" style={{ textTransform: "capitalize" }}>
@@ -29,9 +27,9 @@ const Exercices = ({ exos, test }) => (
             </Typography>
 
             <List component="ul">
-              {exosGroup.map(({ title }) => (
-                <ListItem button>
-                  <ListItemText primary={title} />
+              {exosGroup.map(({ title }, i) => (
+                <ListItem button key={i}>
+                  <ListItemText primary={title} disableTypography />
                 </ListItem>
               ))}
             </List>

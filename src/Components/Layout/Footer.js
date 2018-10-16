@@ -10,13 +10,25 @@ value={this.state.value}
 onChange={this.handleChange}
 */
 
-const Footer = ({ muscles }) => (
-  <Paper>
-    <Tabs indicatorColor="primary" textColor="primary" centered value={0}>
-      <Tab label="All" />
-      {muscles.map((muscle, i) => <Tab label={muscle} key={i} />)}
-    </Tabs>
-  </Paper>
-);
+const Footer = ({ muscles, category, onSelect }) => {
+  const index = category
+    ? muscles.findIndex(group => group === category) + 1
+    : 0;
+
+  return (
+    <Paper>
+      <Tabs
+        indicatorColor="primary"
+        textColor="primary"
+        centered
+        value={index}
+        //onChange={onSelect}
+      >
+        <Tab label="All" variant="h5" />
+        {muscles.map((muscle, i) => <Tab label={muscle} key={i} />)}
+      </Tabs>
+    </Paper>
+  );
+};
 
 export default Footer;
