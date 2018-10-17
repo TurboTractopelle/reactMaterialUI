@@ -15,6 +15,11 @@ const Footer = ({ muscles, category, onSelect }) => {
     ? muscles.findIndex(group => group === category) + 1
     : 0;
 
+  const monAction = (e, value) =>
+    value == 0 ? onSelect("All") : onSelect(muscles[value - 1]);
+
+  // function(event: object, value: number) => void
+
   return (
     <Paper>
       <Tabs
@@ -22,7 +27,7 @@ const Footer = ({ muscles, category, onSelect }) => {
         textColor="primary"
         centered
         value={index}
-        //onChange={onSelect}
+        onChange={monAction}
       >
         <Tab label="All" variant="h5" />
         {muscles.map((muscle, i) => <Tab label={muscle} key={i} />)}
