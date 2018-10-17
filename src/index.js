@@ -8,7 +8,8 @@ import "./styles.css";
 class App extends Component {
   state = {
     exercises,
-    category: "All"
+    category: "All",
+    exercice: {}
   };
 
   getExercicesByMuscles = () =>
@@ -26,14 +27,25 @@ class App extends Component {
     });
   };
 
+  handleExerciceSelected = id => {
+    this.setState(prevState => ({
+      exercice: prevState.exercises.find(item => item.id === id)
+    }));
+  };
+
   render() {
     const exos = this.getExercicesByMuscles();
-    const { category } = this.state;
+    const { category, exercice } = this.state;
 
     return (
       <fragment>
         <Header />
-        <Exercices exos={exos} category={category} />
+        <Exercices
+          exos={exos}
+          exercice={exercice}
+          category={category}
+          onSelect={this.handleExerciceSelected}
+        />
         <Footer
           muscles={muscles}
           category={category}

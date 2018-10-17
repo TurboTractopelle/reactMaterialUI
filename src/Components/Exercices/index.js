@@ -16,43 +16,48 @@ const styles = {
   }
 };
 
-const Exercices = ({ exos, test, category }) => (
-  <Grid container>
-    <Grid item xs>
-      <Paper style={styles.paper}>
-        {exos.map(
-          ([group, exosGroup]) =>
-            category === "All" || category === group ? (
-              <fragment>
-                <Typography
-                  variant="h5"
-                  style={{ textTransform: "capitalize" }}
-                >
-                  {console.log(category, group)} {group}
-                </Typography>
+const Exercices = ({ exos, test, category, onSelect, exercice }) => {
+  const { id, title = "Welcome", description = "Click somewhere" } = exercice;
+  return (
+    <Grid container>
+      <Grid item xs>
+        <Paper style={styles.paper}>
+          {exos.map(
+            ([group, exosGroup]) =>
+              category === "All" || category === group ? (
+                <fragment>
+                  <Typography
+                    variant="h5"
+                    style={{ textTransform: "capitalize" }}
+                  >
+                    {group}
+                  </Typography>
 
-                <List component="ul">
-                  {exosGroup.map(({ title }, i) => (
-                    <ListItem button key={i}>
-                      <ListItemText primary={title} disableTypography />
-                    </ListItem>
-                  ))}
-                </List>
-              </fragment>
-            ) : null
-        )}
-      </Paper>
-    </Grid>
-    <Grid item xs>
-      <Paper style={styles.paper}>
-        <Typography variant="h4">Welcome</Typography>
+                  <List component="ul">
+                    {exosGroup.map(({ title, id }, i) => (
+                      <ListItem button key={i}>
+                        <ListItemText
+                          primary={title}
+                          disableTypography
+                          onClick={() => onSelect(id)}
+                        />
+                      </ListItem>
+                    ))}
+                  </List>
+                </fragment>
+              ) : null
+          )}
+        </Paper>
+      </Grid>
+      <Grid item xs>
+        <Paper style={styles.paper}>
+          <Typography variant="h4">{title}</Typography>
 
-        <Typography variant="body">
-          Please select an exercice from the left
-        </Typography>
-      </Paper>
+          <Typography variant="body">{description}</Typography>
+        </Paper>
+      </Grid>
     </Grid>
-  </Grid>
-);
+  );
+};
 
 export default Exercices;
