@@ -16,25 +16,31 @@ const styles = {
   }
 };
 
-const Exercices = ({ exos, test }) => (
+const Exercices = ({ exos, test, category }) => (
   <Grid container>
     <Grid item xs>
       <Paper style={styles.paper}>
-        {exos.map(([group, exosGroup]) => (
-          <fragment>
-            <Typography variant="h5" style={{ textTransform: "capitalize" }}>
-              {group}
-            </Typography>
+        {exos.map(
+          ([group, exosGroup]) =>
+            category === "All" || category === group ? (
+              <fragment>
+                <Typography
+                  variant="h5"
+                  style={{ textTransform: "capitalize" }}
+                >
+                  {console.log(category, group)} {group}
+                </Typography>
 
-            <List component="ul">
-              {exosGroup.map(({ title }, i) => (
-                <ListItem button key={i}>
-                  <ListItemText primary={title} disableTypography />
-                </ListItem>
-              ))}
-            </List>
-          </fragment>
-        ))}
+                <List component="ul">
+                  {exosGroup.map(({ title }, i) => (
+                    <ListItem button key={i}>
+                      <ListItemText primary={title} disableTypography />
+                    </ListItem>
+                  ))}
+                </List>
+              </fragment>
+            ) : null
+        )}
       </Paper>
     </Grid>
     <Grid item xs>

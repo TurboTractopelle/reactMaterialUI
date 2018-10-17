@@ -8,7 +8,7 @@ import "./styles.css";
 class App extends Component {
   state = {
     exercises,
-    category: ""
+    category: "All"
   };
 
   getExercicesByMuscles = () =>
@@ -33,7 +33,7 @@ class App extends Component {
     return (
       <fragment>
         <Header />
-        <Exercices exos={exos} />
+        <Exercices exos={exos} category={category} />
         <Footer
           muscles={muscles}
           category={category}
