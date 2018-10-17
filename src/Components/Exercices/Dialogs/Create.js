@@ -34,7 +34,7 @@ class Create extends Component {
             <form />
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} variant="text">
+            <Button onClick={this.handleClose} variant="contained">
               Create
             </Button>
           </DialogActions>
