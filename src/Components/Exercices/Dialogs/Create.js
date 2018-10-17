@@ -6,10 +6,19 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import AddIcon from "@material/icon-button/Add";
 
 const Create = props => (
   <fragment>
-    <Button onClick={this.handleClickOpen}>Open form dialog</Button>
+    <Button
+      onClick={this.handleClickOpen}
+      variant="fab"
+      color="primary"
+      aria-label="Add"
+      size="small"
+    >
+      <AddIcon />
+    </Button>
 
     <Dialog
       open={this.state.open}
@@ -29,3 +38,5 @@ const Create = props => (
     </Dialog>
   </fragment>
 );
+
+export default Create;
