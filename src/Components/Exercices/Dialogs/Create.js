@@ -6,7 +6,8 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import AddIcon from "@material/icon-button/Add";
+import Icon from "@material-ui/core/Icon";
+import AddIcon from "@material-ui/icons/Add";
 
 const Create = props => (
   <fragment>
