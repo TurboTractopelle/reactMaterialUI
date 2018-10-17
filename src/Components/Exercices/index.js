@@ -25,7 +25,7 @@ const Exercices = ({ exos, test, category, onSelect, exercice }) => {
           {exos.map(
             ([group, exosGroup]) =>
               category === "All" || category === group ? (
-                <fragment>
+                <fragment key={group}>
                   <Typography
                     variant="h5"
                     style={{ textTransform: "capitalize" }}
@@ -35,12 +35,8 @@ const Exercices = ({ exos, test, category, onSelect, exercice }) => {
 
                   <List component="ul">
                     {exosGroup.map(({ title, id }, i) => (
-                      <ListItem button key={i}>
-                        <ListItemText
-                          primary={title}
-                          disableTypography
-                          onClick={() => onSelect(id)}
-                        />
+                      <ListItem button key={i} onClick={() => onSelect(id)}>
+                        <ListItemText primary={title} disableTypography />
                       </ListItem>
                     ))}
                   </List>
