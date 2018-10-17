@@ -1,6 +1,5 @@
 import React, { fragment, Component } from "react";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -20,16 +19,12 @@ class Create extends Component {
     const { open } = this.state;
     return (
       <fragment>
-        <Button onClick={this.handleToggle} variant="fab" aria-label="Add" mini>
+        <Button onClick={this.handleToggle} variant="fab" mini>
           <AddIcon />
         </Button>
 
-        <Dialog
-          open={open}
-          onClose={this.handleToggle}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title" variant="title">
+        <Dialog open={open} onClose={this.handleToggle}>
+          <DialogTitle id="form-dialog-title" variant="h1" disableTypography>
             Create a new exercice
           </DialogTitle>
           <DialogContent>
