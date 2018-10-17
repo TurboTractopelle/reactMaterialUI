@@ -1,4 +1,4 @@
-import React, { fragment } from "react";
+import React, { fragment, Component } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -9,35 +9,44 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Icon from "@material-ui/core/Icon";
 import AddIcon from "@material-ui/icons/Add";
 
-const Create = props => (
-  <fragment>
-    <Button
-      onClick={this.handleClickOpen}
-      variant="fab"
-      color="primary"
-      aria-label="Add"
-      size="small"
-    >
-      <AddIcon />
-    </Button>
+class Create extends Component {
+  state = {
+    open: false
+  };
 
-    <Dialog
-      open={this.state.open}
-      onClose={this.handleClose}
-      aria-labelledby="form-dialog-title"
-    >
-      <DialogTitle id="form-dialog-title">Create a new exercice</DialogTitle>
-      <DialogContent>
-        <DialogContentText>Fill the form below</DialogContentText>
-        <form />
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={this.handleClose} color="primary">
-          Create
+  handleToggle = () => this.setState(prevState => ({ open: !prevState.open }));
+
+  render() {
+    const { open } = this.state;
+    return (
+      <fragment>
+        <Button onClick={this.handleToggle} variant="fab" aria-label="Add" mini>
+          <AddIcon />
         </Button>
-      </DialogActions>
-    </Dialog>
-  </fragment>
-);
+
+        <Dialog
+          open={open}
+          onClose={this.handleToggle}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title" variant="title">
+            Create a new exercice
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText variant="body">
+              Fill the form below
+            </DialogContentText>
+            <form />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose} variant="text">
+              Create
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </fragment>
+    );
+  }
+}
 
 export default Create;
