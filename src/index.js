@@ -41,6 +41,16 @@ class App extends Component {
     });
   };
 
+  handleDeleteExercice = id => {
+    this.setState(prevState => {
+      const filteredExercices = prevState.exercises.filter(
+        item => item.id !== id
+      );
+      const monState = { ...prevState, exercises: [...filteredExercices] };
+      return monState;
+    });
+  };
+
   render() {
     const exos = this.getExercicesByMuscles();
     const { category, exercice } = this.state;
@@ -53,6 +63,7 @@ class App extends Component {
           exercice={exercice}
           category={category}
           onSelect={this.handleExerciceSelected}
+          deleteExercice={this.handleDeleteExercice}
         />
         <Footer
           muscles={muscles}

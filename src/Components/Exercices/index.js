@@ -5,6 +5,9 @@ import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import IconButton from "@material-ui/core/IconButton";
+import Delete from "@material-ui/icons/Delete";
 
 const styles = {
   paper: {
@@ -16,7 +19,14 @@ const styles = {
   }
 };
 
-const Exercices = ({ exos, test, category, onSelect, exercice }) => {
+const Exercices = ({
+  exos,
+  test,
+  category,
+  onSelect,
+  exercice,
+  deleteExercice
+}) => {
   const { id, title = "Welcome", description = "Click somewhere" } = exercice;
   return (
     <Grid container>
@@ -37,6 +47,11 @@ const Exercices = ({ exos, test, category, onSelect, exercice }) => {
                     {exosGroup.map(({ title, id }, i) => (
                       <ListItem button key={i} onClick={() => onSelect(id)}>
                         <ListItemText primary={title} disableTypography />
+                        <ListItemSecondaryAction>
+                          <IconButton aria-label="Delete">
+                            <Delete onClick={() => deleteExercice(id)} />
+                          </IconButton>
+                        </ListItemSecondaryAction>
                       </ListItem>
                     ))}
                   </List>
