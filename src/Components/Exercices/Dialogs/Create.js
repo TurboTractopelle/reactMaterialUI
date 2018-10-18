@@ -13,10 +13,11 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
+import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   TextField: {
-    width: 500
+    width: 200
   }
 });
 
@@ -60,6 +61,7 @@ class Create extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     const { open, exercice } = this.state;
     const { title, description, muscles } = exercice;
     return (
@@ -82,6 +84,7 @@ class Create extends Component {
                 value={title}
                 onChange={this.handleChange("title")}
                 margin="normal"
+                className={classes.TextField}
               />
               <br />
               <TextField
@@ -89,11 +92,13 @@ class Create extends Component {
                 value={description}
                 onChange={this.handleChange("description")}
                 margin="normal"
+                className={classes.TextField}
               />
               <br />
               <FormControl>
                 <InputLabel htmlFor="select-cat">Category</InputLabel>
                 <Select
+                  className={classes.TextField}
                   value={muscles}
                   onChange={this.handleChange("muscles")}
                   inputProps={{
@@ -118,4 +123,4 @@ class Create extends Component {
   }
 }
 
-export default Create;
+export default withStyles(styles)(Create);
