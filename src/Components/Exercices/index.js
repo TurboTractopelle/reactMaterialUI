@@ -32,6 +32,7 @@ const Exercices = ({
     <Grid container>
       <Grid item xs>
         <Paper style={styles.paper}>
+          {console.log(exos)}
           {exos.map(
             ([group, exosGroup]) =>
               category === "All" || category === group ? (

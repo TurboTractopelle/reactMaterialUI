@@ -19,8 +19,6 @@ class App extends Component {
       return { ...acc, [item]: "" };
     }, {});
 
-    console.log(init);
-
     return Object.entries(
       this.state.exercises.reduce((acc, item) => {
         const cle = item.muscles;
