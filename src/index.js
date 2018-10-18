@@ -35,9 +35,9 @@ class App extends Component {
 
   submitExercice = obj => {
     this.setState(prevState => {
-      const obj2 = { ...obj, id: "ok" };
-      console.log(obj2);
-      return { ...prevState, exercice: { ...prevState.exercice, obj2 } };
+      const id = obj.title.toLocaleLowerCase().replace(/ /g, "-");
+      const obj2 = { ...obj, id: id };
+      return { ...prevState, exercises: [...prevState.exercises, obj2] };
     });
   };
 

@@ -14,6 +14,12 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
+const styles = theme => ({
+  TextField: {
+    width: 500
+  }
+});
+
 class Create extends Component {
   constructor(props) {
     super(props);
