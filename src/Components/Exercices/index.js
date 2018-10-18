@@ -44,16 +44,18 @@ const Exercices = ({
                   </Typography>
 
                   <List component="ul">
-                    {exosGroup.map(({ title, id }, i) => (
-                      <ListItem button key={i} onClick={() => onSelect(id)}>
-                        <ListItemText primary={title} disableTypography />
-                        <ListItemSecondaryAction>
-                          <IconButton aria-label="Delete">
-                            <Delete onClick={() => deleteExercice(id)} />
-                          </IconButton>
-                        </ListItemSecondaryAction>
-                      </ListItem>
-                    ))}
+                    {exosGroup
+                      ? exosGroup.map(({ title, id }, i) => (
+                          <ListItem button key={i} onClick={() => onSelect(id)}>
+                            <ListItemText primary={title} disableTypography />
+                            <ListItemSecondaryAction>
+                              <IconButton aria-label="Delete">
+                                <Delete onClick={() => deleteExercice(id)} />
+                              </IconButton>
+                            </ListItemSecondaryAction>
+                          </ListItem>
+                        ))
+                      : null}
                   </List>
                 </fragment>
               ) : null

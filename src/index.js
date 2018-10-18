@@ -12,14 +12,23 @@ class App extends Component {
     exercice: {}
   };
 
-  getExercicesByMuscles = () =>
-    Object.entries(
+  getExercicesByMuscles = () => {
+    //on crée un tableau qui contient les muscles dans des array vide
+
+    const init = muscles.reduce((acc, item) => {
+      return { ...acc, [item]: "" };
+    }, {});
+
+    console.log(init);
+
+    return Object.entries(
       this.state.exercises.reduce((acc, item) => {
         const cle = item.muscles;
         acc[cle] = acc[cle] ? [...acc[cle], item] : [item];
         return acc;
-      }, {})
+      }, init)
     );
+  };
 
   handleSelectCategory = category => {
     this.setState({
