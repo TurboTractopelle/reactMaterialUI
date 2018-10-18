@@ -18,6 +18,7 @@ class Create extends Component {
   constructor(props) {
     super(props);
     this.categories = this.props.muscles;
+    this.submit = this.props.submitExercice;
   }
 
   state = {
@@ -34,7 +35,6 @@ class Create extends Component {
   handleChange = name => event => {
     const valeur = event.target.value;
     this.setState(prevState => {
-      console.log(this.state.exercice);
       return {
         ...prevState,
         exercice: { ...prevState.exercice, [name]: valeur }
@@ -50,6 +50,7 @@ class Create extends Component {
         exercice: { title: "", description: "", muscles: "" }
       };
     });
+    this.submit(this.state.exercice);
   };
 
   render() {

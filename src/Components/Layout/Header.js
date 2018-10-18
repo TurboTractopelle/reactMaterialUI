@@ -6,13 +6,13 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import Create from "../Exercices/Dialogs/Create";
 
-const Header = ({ muscles }) => (
+const Header = ({ muscles, submitExercice }) => (
   <AppBar position="static">
     <Toolbar>
       <Typography variant="h5" color="inherit" style={{ flex: 1 }}>
         Exercices database
       </Typography>
-      <Create muscles={muscles} />
+      <Create muscles={muscles} submitExercice={submitExercice} />
     </Toolbar>
   </AppBar>
 );

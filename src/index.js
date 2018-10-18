@@ -33,13 +33,21 @@ class App extends Component {
     }));
   };
 
+  submitExercice = obj => {
+    this.setState(prevState => {
+      const obj2 = { ...obj, id: "ok" };
+      console.log(obj2);
+      return { ...prevState, exercice: { ...prevState.exercice, obj2 } };
+    });
+  };
+
   render() {
     const exos = this.getExercicesByMuscles();
     const { category, exercice } = this.state;
 
     return (
       <fragment>
-        <Header muscles={muscles} />
+        <Header muscles={muscles} submitExercice={this.submitExercice} />
         <Exercices
           exos={exos}
           exercice={exercice}
