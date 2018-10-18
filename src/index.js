@@ -39,7 +39,7 @@ class App extends Component {
 
     return (
       <fragment>
-        <Header />
+        <Header muscles={muscles} />
         <Exercices
           exos={exos}
           exercice={exercice}

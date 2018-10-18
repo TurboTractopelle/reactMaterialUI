@@ -7,12 +7,22 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Icon from "@material-ui/core/Icon";
 import AddIcon from "@material-ui/icons/Add";
-import TextField from '@material-ui/core/TextField';
+import TextField from "@material-ui/core/TextField";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
 
 class Create extends Component {
+  constructor(props) {
+    super(props);
+    this.categories = this.props.muscles;
+  }
+
   state = {
     open: false,
-    exercice : {
+    exercice: {
       title: "",
       description: "",
       muscles: ""
@@ -21,17 +31,30 @@ class Create extends Component {
 
   handleToggle = () => this.setState(prevState => ({ open: !prevState.open }));
 
-  handleChange = (name) => (event) => {
+  handleChange = name => event => {
     const valeur = event.target.value;
-    this.setState((prevState)=>{
-      console.log(this.state.exercice)
-      return { ...prevState, exercice: { ...prevState.exercice, [name]: valeur } }
-    })
-  }
+    this.setState(prevState => {
+      console.log(this.state.exercice);
+      return {
+        ...prevState,
+        exercice: { ...prevState.exercice, [name]: valeur }
+      };
+    });
+  };
+
+  handleSubmit = event => {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        open: false,
+        exercice: { title: "", description: "", muscles: "" }
+      };
+    });
+  };
 
   render() {
     const { open, exercice } = this.state;
-    const {title, description, muscles} = exercice
+    const { title, description, muscles } = exercice;
     return (
       <fragment>
         <Button onClick={this.handleToggle} variant="fab" mini>
@@ -46,25 +69,39 @@ class Create extends Component {
             <DialogContentText variant="body">
               Fill the form below
             </DialogContentText>
-            <form >
+            <form>
               <TextField
                 label="Title"
                 value={title}
-                onChange={this.handleChange('title')}
+                onChange={this.handleChange("title")}
                 margin="normal"
               />
-            </form>
-            <form >
+              <br />
               <TextField
                 label="Description"
                 value={description}
-                onChange={this.handleChange('description')}
+                onChange={this.handleChange("description")}
                 margin="normal"
               />
+              <br />
+              <FormControl>
+                <InputLabel htmlFor="select-cat">Category</InputLabel>
+                <Select
+                  value={muscles}
+                  onChange={this.handleChange("muscles")}
+                  inputProps={{
+                    id: "select-cat"
+                  }}
+                >
+                  {this.categories.map(item => (
+                    <MenuItem value={item}>{item}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </form>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} variant="contained">
+            <Button onClick={this.handleSubmit} variant="contained">
               Create
             </Button>
           </DialogActions>
